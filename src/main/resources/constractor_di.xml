@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+
+	<!-- 使用构造注入的方式 -->
+	<!-- 
+		构造注入方式:
+		1.　指定参数名称, 使用name属性
+			<constractor-arg name="参数名" value="参数值"/> 
+		2.　指定参数数据类型, 使用type属性
+			<constractor-arg type="java.lang.String" value="参数值"/>
+		3.　指定参数的索引位置, 使用index属性(索引位置从0开始)
+			<constractor-arg index="0" value="参数值"/>
+	 -->
+	<bean id="address" class="com.jnmd.spring.di.Address">
+		<!-- 指定参数名称, 使用name属性 -->
+		<!-- <constructor-arg name="offi" value="Test"/>
+		<constructor-arg name="home" value="山洞"/> -->
+		
+		<!-- 指定参数数据类型, 使用type属性 -->
+		<!-- <constructor-arg type="java.lang.String" value="asdfg"/>
+		<constructor-arg type="java.lang.String" value="qwert"/>
+		<constructor-arg type="int" value="123"/> -->
+		<!-- Address [home=qwert, offi=asdfg, code=123] -->
+		<!-- Address [home=asdfg, offi=qwert, code=123] -->
+		
+		<!-- 指定参数的索引位置, 使用index属性(索引位置从0开始) -->
+		<constructor-arg index="0" value="qqq"/>
+		<constructor-arg index="2" value="112"/>
+		<constructor-arg index="1" value="www"/>
+		
+	</bean>
+
+</beans>

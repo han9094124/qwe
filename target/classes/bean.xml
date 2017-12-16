@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+
+	<bean id="userDAO" class="com.jnmd.spring.normal.UserDAO">
+    
+    </bean>	
+
+    <bean id="userServcie" class="com.jnmd.spring.normal.UserService">
+    	<property name="userDAO" ref="userDAO"/>
+    </bean>
+    
+    <bean id="address" class="com.jnmd.spring.di.Address">
+    	<property name="home" value="大山山洞中"/>
+    	<property name="offi" value="山顶上"/>
+    </bean>
+    
+    <!-- 
+    	bean对象默认为单例
+    	可以通过scope属性指定其为单例(scope="singleton")
+    	scope属性指定其为多例(scope="prototype")
+     -->
+    <bean id="person" class="com.jnmd.spring.di.Person" 
+    	scope="prototype" init-method="init" destroy-method="destroy">
+    	<property name="name" value="张三"/>
+    	<property name="age" value="21"/>
+    	<property name="address" ref="address"/>
+    </bean>
+    
+    <bean id="p2" class="com.jnmd.spring.di.Person">
+    	<property name="name" value="李四"/>
+    	<property name="age" value="22"/>
+    	<property name="address" ref="address"/>
+    </bean>
+    
+    <bean id="user" class="com.jnmd.spring.di.User">
+    	<property name="id" value="123456"/>
+    	<property name="name" value="jack"/>
+    	<property name="strArrs">
+    		<array>
+    			<value>qw</value>
+    			<value>we</value>
+    			<value>er</value>
+    		</array>
+    	</property>
+    	<property name="list">
+    		<list>
+    			<value>list1</value>
+    			<value>list2</value>
+    			<value>list3</value>
+    		</list>
+    	</property>
+    	<property name="sets">
+    		<set>
+    			<value>set1</value>
+    			<value>set2</value>
+    			<value>set3</value>
+    		</set>
+    	</property>
+    	<property name="persons">
+			<set>
+				<ref bean="person"/>
+				<ref bean="p2"/>
+			</set>
+    	</property>
+    </bean>
+    
+    
+</beans>
